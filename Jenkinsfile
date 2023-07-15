@@ -28,7 +28,7 @@ APP_NAME = "spring-expense"
                    git add expense-spring-deployment.yaml
                    git commit -m "updated the deployment file"
                    """
-                   withCredentials([gitUsernamePassword(credentialsId: 'Github_Token', gitToolName: 'Default')]) {
+                   withCredentials([string(credentialsId: 'Github_Token', variable: 'token')]) {
                                        sh 'git push https://github.com/yonissam/expense-springboot-argo.git main'
                                    }
            }
