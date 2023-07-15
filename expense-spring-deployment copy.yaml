@@ -9,7 +9,6 @@ spec:
   selector:
     matchLabels:
       app: expense-spring
-  strategy: {}
   template:
     metadata:
       labels:
