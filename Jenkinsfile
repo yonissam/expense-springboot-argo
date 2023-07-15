@@ -5,6 +5,15 @@ APP_NAME = "spring-expense"
 }
     agent any
     stages{
+
+
+         stage("Clone Git Repository") {
+            steps {
+                 withCredentials([gitUsernamePassword(credentialsId: 'GITHUB_TOKEN', gitToolName: 'Default')]) {
+                                       sh 'git clone -b main https://github.com/yonissam/expense-springboot-argo.git'
+                                   }
+            }
+        }
   
         stage('Updating kubernetes deployment file') {
         steps{
@@ -19,15 +28,9 @@ APP_NAME = "spring-expense"
         }
         }
 
-        stages {
-        stage("Clone Git Repository") {
-            steps {
-                 withCredentials([gitUsernamePassword(credentialsId: 'GITHUB_TOKEN', gitToolName: 'Default')]) {
-                                       sh 'git clone -b main https://github.com/yonissam/expense-springboot-argo.git'
-                                   }
-            }
-        }
-    }
+        
+       
+    
 
         stage('Push the changed deployment file to GITHUB') {
         steps{
