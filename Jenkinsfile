@@ -28,8 +28,15 @@ APP_NAME = "spring-expense"
         }
         }
 
+          stage("Clone Git Repository 2") {
+            steps {
+                 withCredentials([gitUsernamePassword(credentialsId: 'GITHUB_TOKEN', gitToolName: 'Default')]) {
+                                       sh 'git clone -b main https://github.com/yonissam/expense-springboot-argo.git'
+                                   }
+            }
+        }
+
         
-       
     
 
         stage('Push the changed deployment file to GITHUB') {
@@ -38,6 +45,7 @@ APP_NAME = "spring-expense"
                 sh """
                    git config --global user.name "yonissam"
                    git config --global user.email "ysisay@icloud.com"
+                   git checkout -b main
                    git add expense-spring-deployment.yaml
                    git commit -m "updated the deployment file"
                    """
