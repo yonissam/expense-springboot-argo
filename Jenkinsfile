@@ -25,7 +25,7 @@ APP_NAME = "spring-expense"
                 sh """
                    git config --global user.name "yonissam"
                    git config --global user.email "ysisay@icloud.com"
-                   git pull https://github.com/yonissam/expense-springboot-argo.git main
+                   git checkout -b main 
                    git add expense-spring-deployment.yaml
                    git commit -m "updated the deployment file"
                    """
