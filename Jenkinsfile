@@ -5,14 +5,7 @@ APP_NAME = "spring-expense"
 }
     agent any
     stages{
-   stage('Cleanup workspace'){
-      steps {
-          script {
-             cleanWs()
-          }
-      }
-   }
-
+  
         stage('Updating kubernetes deployment file') {
         steps{
         script {
