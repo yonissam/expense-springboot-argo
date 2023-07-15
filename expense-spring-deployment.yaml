@@ -15,7 +15,7 @@ spec:
         app: expense-spring
     spec:
       containers:
-        - image: yoniss/expense-spring:v1
+        - image: yoniss/expense-spring:17
           name: expense-spring
 ---
 apiVersion: v1
