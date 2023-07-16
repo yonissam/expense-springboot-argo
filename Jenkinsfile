@@ -34,8 +34,7 @@ APP_NAME = "spring-expense"
                                        sh 'git pull --ff-only https://github.com/yonissam/expense-springboot-argo.git'
                                    }
                    withCredentials([gitUsernamePassword(credentialsId: 'GITHUB_TOKEN', gitToolName: 'Default')]) {
-                                       sh 'git pull https://github.com/yonissam/expense-springboot-argo.git main'
-                                       sh 'git push https://github.com/yonissam/expense-springboot-argo.git main'
+                                       sh 'git push -f https://github.com/yonissam/expense-springboot-argo.git main'
                                    }
            }
         }
