@@ -14,26 +14,14 @@ APP_NAME = "spring-expense"
                 cat expense-spring-deployment.yaml | grep image
                 sed -i  's|image: .*|image: ${DOCKERHUB_USERNAME}/${APP_NAME}:${IMAGE_TAG}|' expense-spring-deployment.yaml
                 cat expense-spring-deployment.yaml | grep image
+                git add expense-spring-deployment.yaml
+                git commit -m "updated the deployment file"
                 """
-
-        }
-        }
-        }
-          
-
-        stage('Push the changed deployment file to GITHUB') {
-        steps{
-           script{
-                sh """
-                   git config --global user.name "yonissam"
-                   git config --global user.email "ysisay@icloud.com"
-                   git add expense-spring-deployment.yaml
-                   git commit -m "updated the deployment file"
-                   """
-                   withCredentials([gitUsernamePassword(credentialsId: 'GITHUB_TOKEN', gitToolName: 'Default')]) {
+                withCredentials([gitUsernamePassword(credentialsId: 'GITHUB_TOKEN', gitToolName: 'Default')]) {
                                        sh 'git push -f https://github.com/yonissam/expense-springboot-argo.git main'
                                    }
-           }
+
+        }
         }
         }
 
