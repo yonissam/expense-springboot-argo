@@ -31,9 +31,6 @@ APP_NAME = "spring-expense"
                    git commit -m "updated the deployment file"
                    """
                    withCredentials([gitUsernamePassword(credentialsId: 'GITHUB_TOKEN', gitToolName: 'Default')]) {
-                                       sh 'git pull --ff-only https://github.com/yonissam/expense-springboot-argo.git'
-                                   }
-                   withCredentials([gitUsernamePassword(credentialsId: 'GITHUB_TOKEN', gitToolName: 'Default')]) {
                                        sh 'git push -f https://github.com/yonissam/expense-springboot-argo.git main'
                                    }
            }
