@@ -7,8 +7,6 @@ APP_NAME = "spring-expense"
     stages{
 
 
-    
-  
         stage('Updating kubernetes deployment file') {
         steps{
         script {
@@ -21,17 +19,7 @@ APP_NAME = "spring-expense"
         }
         }
         }
-
-          stage("Clone Git Repository") {
-            steps {
-                 withCredentials([gitUsernamePassword(credentialsId: 'GITHUB_TOKEN', gitToolName: 'Default')]) {
-                                       sh 'git clone -b main https://github.com/yonissam/expense-springboot-argo.git'
-                                   }
-            }
-        }
-
-        
-    
+          
 
         stage('Push the changed deployment file to GITHUB') {
         steps{
