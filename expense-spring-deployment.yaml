@@ -15,7 +15,7 @@ spec:
         app: expense-spring
     spec:
       containers:
-        - image: yoniss/spring-expense:28
+        - image: yoniss/spring-expense:31
           name: expense-spring
           imagePullPolicy: Always
 ---
